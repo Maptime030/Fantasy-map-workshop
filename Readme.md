@@ -70,7 +70,7 @@ After looking at some interactive maps online we will explain some tools and tri
 - [How to make an interactive story map using leaflet and non geographical images](https://medium.com/@jarednielsen/how-to-make-an-interactive-story-map-using-leaflet-and-non-geographical-images-821f49ff3b0d)
 - http://build-failed.blogspot.nl/2012/11/zoomable-image-with-leaflet.html
 
-## GDAL2Tiles example
+## GDAL2Tiles
 
 This [example](http://maptime-ams.github.io/gdal2tiles-example/) uses a map of Corsica from the David Rumsey Map Collection. It is made by creating map tiles from an image using GDAL's gdal2tiles.
 
@@ -82,25 +82,35 @@ We can use this tool to run on any image we have.
 
 Prerequisites:
 
-    Install Python2.7
-    Install GDAL-core
-    Install GDAL-Python bindings
+- Install Python2.7
+- Install GDAL-core
+- Install GDAL-Python bindings
+
+	sudo apt-get install python-gdal
+
+And under /usr/bin/ you will have gdal2tiles.py.
+
+Documentation: http://www.gdal.org/gdal2tiles.html
+
+**Step 3.** run gdal2tiles
 
 To create map tiles from any given image, run gdal2tiles.py from your console:
 
-	gdal2tiles.py -p raster -w none corsica.jpg
+	gdal2tiles.py -p raster -w none <image> 
 
 The created tiles can be used in Leaflet by using Leaflet's tms option:
 
 	L.tileLayer(tileUrl, {tms: true}).addTo(map);
 
 
+## gdal2tiles-leaflet
+
 We can also use the [gdal2tiles-leaflet tool form commenthol](https://github.com/commenthol/gdal2tiles-leaflet).
 It adds the option -l or --leaflet to generate the resulting images with the reference point [0,0] in the upper-left (North-West) corner, opposed to the standard behaviour for TMS tiles using the lower-left (South-East) corner.
 
 Prerequisites:
 
-	sudo apt install python-gdal
+	sudo apt-get install python-gdal
 
 Download or clone the repository. https://github.com/commenthol/gdal2tiles-leaflet
 
@@ -123,18 +133,13 @@ Assuming an image with 2000x3000 pixels:
 
 To use the generated tiles with Leaflet there is a small plugin to correctly set the required projection for raster images. Please refer to the documention at [leaflet-rastercoords](https://github.com/commenthol/leaflet-rastercoords).
 
+## Docker
 
-### Docker
-
-For convenient usage we already created a gdal2tiles-leaflet docker image. 
+For convenient usage we already created a gdal2tiles-leaflet docker image. Just run:
 
 	docker run --rm -v `pwd`:/data niene/gdal2tiles-leaflet -l -p raster -z 0-5 -w none /data/<image> /data/<tilesdir> 
 
 More info see https://github.com/NieneB/gdal2tiles-leaflet 
-
-### Example
-
-See gdal2tiles/index.html
 
 ## Leaflet-rastercoords plugin
 
@@ -142,22 +147,12 @@ Leaflet plugin for plain image map projection to display large images using tile
 
 https://github.com/commenthol/leaflet-rastercoords
 
-### Example
-
-See Leaflet-rastercoords/index.html
-
 ## Leaflet CRS:simple
 
 Workshops:
 	- http://leafletjs.com/examples/crs-simple/crs-simple.html
 
-### Example
-
-See crs_simple/index.html
-
-
-
-## Random fantasy maps with D3
+# Random fantasy maps with D3
 
 Some online tutorials: 
 
