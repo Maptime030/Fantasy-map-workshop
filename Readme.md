@@ -14,13 +14,19 @@ But how do you make a map of an imaginary world that fires up someone's imaginat
 He will come show us his work and tell us all about how to make a fantasy map. After that we will work on our own fantasy map, based on a real editors story! 
 
 
+[Winifred Broeder](landkaartje.nl) will tell us about the maps she made for the [Bommel Reisgids](https://www.google.nl/url?sa=t&rct=j&q=&esrc=s&source=web&cd=12&ved=0ahUKEwjwxLiJ4obXAhVGuRoKHfC-ArYQFghUMAs&url=http%3A%2F%2Fgeo-info.kingsquare.nl%2Fdownload%2F%3Fid%3D17672638%26download%3D1&usg=AOvVaw3LoovpGgDaCvWYZ5C2rE2b). Her company is called Landkaartje, founded in 1990. Winifred studied  Geography with Cartography as specialism. Landkaartje stands for content based, functional maps and info graphics in a clear, readable and pleasant form. 
+
 ### Program
 
 19:00-19:30 Daniels Maps
 
 19:30-20:00 Interactive Fantasy Maps
 
-20:00- ...  Hands on! Make your own Fantasy Map!
+19:30-20:00 De Bommel reisgids
+
+20:00-20:30 Interactive Fantasy Maps
+
+20:30- ...  Hands on! Make your own Fantasy Map! 
 
 **Maptime is Hands on! So bring your pencils, markers and laptop to this meetup!!**
 
@@ -78,13 +84,14 @@ We can use this tool to run on any image we have.
 
 **Step 1.** Scan your map or Download an image
 
-**Step 2.** Install gdal2tiles.py or gdal2tiles-leaflet
+**Step 2.** Install gdal2tiles.py 
 
 Prerequisites:
 
 - Install Python2.7
 - Install GDAL-core
 - Install GDAL-Python bindings
+
 
 	sudo apt-get install python-gdal
 
@@ -108,13 +115,18 @@ The created tiles can be used in Leaflet by using Leaflet's tms option:
 We can also use the [gdal2tiles-leaflet tool form commenthol](https://github.com/commenthol/gdal2tiles-leaflet).
 It adds the option -l or --leaflet to generate the resulting images with the reference point [0,0] in the upper-left (North-West) corner, opposed to the standard behaviour for TMS tiles using the lower-left (South-East) corner.
 
+**Step 1.** Get gdal2tiles-leaflet
 Prerequisites:
 
 	sudo apt-get install python-gdal
 
 Download or clone the repository. https://github.com/commenthol/gdal2tiles-leaflet
 
-Run the gdal2tiles.py from your console: 
+Unzip
+
+**Step 2.** Run the tool
+
+Run the gdal2tiles.py from the gdal2tiles-leaflet folder from your console: 
 
 	$ gdal2tiles.py -l -p raster -z 0-5 -w none <image> <tilesdir>
 
@@ -131,7 +143,7 @@ Assuming an image with 2000x3000 pixels:
 	$ gdal2tiles -l -p raster -z 0-4 ...
 
 
-To use the generated tiles with Leaflet there is a small plugin to correctly set the required projection for raster images. Please refer to the documention at [leaflet-rastercoords](https://github.com/commenthol/leaflet-rastercoords).
+To use the generated tiles with Leaflet there is a small plugin to correctly set the required projection for raster images. Please refer to the documentation at [leaflet-rastercoords](https://github.com/commenthol/leaflet-rastercoords).
 
 ## Docker
 
