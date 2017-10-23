@@ -9,6 +9,28 @@ But how do you make a map of an imaginary world that fires up someone's imaginat
 He will come show us his work and tell us all about how to make a fantasy map. After that we will work on our own fantasy map, based on a real editors story! 
 
 
+### Program
+
+19:00-19:30 Daniels Maps
+
+19:30-20:00 Interactive Fantasy Maps
+
+20:00- ...  Hands on! Make your own Fantasy Map!
+
+Maptime is Hands on! So bring your drawing gear and/or laptop to this meetup!! 
+
+
+### When: Wednesday 25th October
+### Time: 19:00
+### Where: Social Impact Factory, Utrecht
+
+### Contribute!
+
+Maptime is all about learning and sharing! Do you make your own Fantasy Maps? Do you use some cool tools or have great skills that could contribute to this topic? Let us know! You can send a message to one of our organizers if you have something you think we can add to the program! Feel free to bring your work to the Maptime evening! We would love to see what you are working on!
+
+
+
+
 # Interactive Fantasy Maps
 More and more fantasy maps go beyond a static representation on paper as well as online. On the internet we can find various interactive fantasy maps, have a look at this map about [Game of Thrones](https://quartermaester.info/) (Spoiler control!) and the [GoT viewer guide](http://viewers-guide.hbo.com/game-of-thrones/season-1/episode-1/map/location/19/eyrie). Or the one about [Lord of the Rings](http://lotrproject.com/map/#zoom=3&lat=-1315.5&lon=1500&layers=B) which even has its own reference system for route planning!
 
@@ -36,8 +58,13 @@ Some other step by step tutorials can be found on [Fantasy Maps.com](http://fant
 And have a look at these [10 tips](https://io9.gizmodo.com/10-rules-for-making-better-fantasy-maps-1680429159)
 
 
-# How to get things interactive? 
 
+----------------------------------
+# Work in Progress!
+
+
+
+# How to get things interactive? 
 
 ## GDAL2Tiles example
 
