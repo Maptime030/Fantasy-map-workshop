@@ -56,21 +56,19 @@ More and more fantasy maps go beyond a static representation on paper as well as
 After looking at some interactive maps online we will explain some tools and tricks for making one ourselves! A workshop is provided on how to transform your hand-drawn map (or historical map) to a interactive web map. 
 
 
-----------------------------------
-# Work in Progress!
-
-
 # How to get things interactive? 
 
-**Tools:** 
-	- [GDAL2Tiles](http://www.gdal.org/gdal2tiles.html)
-	- [GDAL2Tiles-Leaflet](https://github.com/commenthol/gdal2tiles-leaflet) from commenthol
-	- [Leaflet-rastercoords plugin]()
-	- [Leaflet.js](http://leafletjs.com/) 
+**Tools:**
+
+- [GDAL2Tiles](http://www.gdal.org/gdal2tiles.html)
+- [GDAL2Tiles-Leaflet](https://github.com/commenthol/gdal2tiles-leaflet) from commenthol
+- [Leaflet-rastercoords plugin]()
+- [Leaflet.js](http://leafletjs.com/) 
 
 **Workshops online:**
-	-[How to make an interactive story map using leaflet and non geographical images](https://medium.com/@jarednielsen/how-to-make-an-interactive-story-map-using-leaflet-and-non-geographical-images-821f49ff3b0d)
-	- http://build-failed.blogspot.nl/2012/11/zoomable-image-with-leaflet.html
+
+- [How to make an interactive story map using leaflet and non geographical images](https://medium.com/@jarednielsen/how-to-make-an-interactive-story-map-using-leaflet-and-non-geographical-images-821f49ff3b0d)
+- http://build-failed.blogspot.nl/2012/11/zoomable-image-with-leaflet.html
 
 ## GDAL2Tiles example
 
@@ -134,25 +132,35 @@ For convenient usage we already created a gdal2tiles-leaflet docker image.
 
 More info see https://github.com/NieneB/gdal2tiles-leaflet 
 
+### Example
+
+See gdal2tiles/index.html
 
 ## Leaflet-rastercoords plugin
 
+Leaflet plugin for plain image map projection to display large images using tiles generated with gdal2tiles-leaflet
+
 https://github.com/commenthol/leaflet-rastercoords
 
+### Example
 
+See Leaflet-rastercoords/index.html
 
-
-## Workshop 3. Fantasy Reference System CRS:simple
-
-Tools: 
-	- CRS:simple
-	- RasterCoords
+## Leaflet CRS:simple
 
 Workshops:
 	- http://leafletjs.com/examples/crs-simple/crs-simple.html
 
-## Workshop 4. Random fantasy maps with D3
+### Example
 
-https://github.com/mewo2/terrain
-https://bl.ocks.org/Azgaar/b845ce22ea68090d43a4ecfb914f51bd
-https://mewo2.com/notes/terrain/
+See crs_simple/index.html
+
+
+
+## Random fantasy maps with D3
+
+Some online tutorials: 
+
+- https://github.com/mewo2/terrain
+- https://bl.ocks.org/Azgaar/b845ce22ea68090d43a4ecfb914f51bd
+- https://mewo2.com/notes/terrain/
