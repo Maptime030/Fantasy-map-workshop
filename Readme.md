@@ -18,15 +18,16 @@ He will come show us his work and tell us all about how to make a fantasy map. A
 
 ### Program
 
-19:00-19:30 Daniels Maps
+19:00-19:30 De Bommel reisgids
 
-19:30-20:00 Interactive Fantasy Maps
+19:30-20:00 Daniels Maps
 
-19:30-20:00 De Bommel reisgids
+20:00- 20:45 Hands on! Draw your own Fantasy Map! 
 
-20:00-20:30 Interactive Fantasy Maps
+20:45-21:00 Interactive Fantasy Maps
 
-20:30- ...  Hands on! Make your own Fantasy Map! 
+21:00-21:45 Hands on! Make your map interactive
+
 
 **Maptime is Hands on! So bring your pencils, markers and laptop to this meetup!!**
 
