@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Maptime Utrecht!</title>
+		<link rel="stylesheet" href="presentatie_maptime/css/reveal.css">
+		<link rel="stylesheet" href="presentatie_maptime/css/theme/white.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="presentatie_maptime/lib/css/zenburn.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-state='openingslide'>
+					<img src="presentatie_maptime/img/maptimeUtrecht.png"/>
+				</section>
+				<section>
+					<h1>Interactive Fantasy Maps!</h1>
+				</section>
+				<section>
+					<h2>Simple</h2>
+					<h2> v </h2>
+					<h2> v </h2>
+					<h2> v </h2>
+					<h2>Hard</h2>
+				</section>
+			</div>
+		</div>
+		<script src="presentatie_maptime/lib/js/head.min.js"></script>
+		<script src="presentatie_maptime/js/reveal.js"></script>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'presentatie_maptime/plugin/markdown/marked.js' },
+					{ src: 'presentatie_maptime/plugin/markdown/markdown.js' },
+					{ src: 'presentatie_maptime/plugin/notes/notes.js', async: true },
+					{ src: 'presentatie_maptime/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
