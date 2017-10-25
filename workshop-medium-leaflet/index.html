@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      #mapid {
+        position: absolute;
+          height: 100%;
+          width: 100%;
+          padding: 0 0 0 0;
+          margin: 0 0 0 0 ;
+          z-index: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-beta.2/leaflet.css" />
+    <title>Fantasy Maps</title>
+  </head>
+  <body> 
+    <div id="mapid"></div>
+    <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-beta.2/leaflet.js"></script>
+    <script type="text/javascript">
+
+      window.addEventListener("DOMContentLoaded", function() {
+        
+        var schilderij = L.tileLayer('nachtwacht/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 6
+        });
+
+        var Meso = L.tileLayer('Meso/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 6
+        });
+        var WestChar = L.tileLayer('WestChar/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 10
+        });
+      
+        var map = L.map("mapid", {
+          center: [1,0],
+          zoom: 5,
+          layers: [schilderij]
+        });
+        var baseMaps = {
+          "Rijksmuseum": schilderij,
+          "Mesopotamia": Meso,
+          "West Char an Tyra": WestChar
+        };
+        L.control.layers(baseMaps).addTo(map);
+       
+      });
+    </script>
+  </body>
+</html>
