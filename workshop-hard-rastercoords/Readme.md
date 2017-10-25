@@ -33,12 +33,14 @@ Look at one tile 5/1/20
 ![5/1/20](../workshop-medium-leaflet/Meso/5/1/20.png)
 
 One stripe is 84px. (measure with Photoshop or GIMP!)
-One stipe is 0.25 on our image axis. 
+One stripe is 0.25 on our image axis. 
 
 So after some math:
 
-|zoom 5 | 84 px | 84 map units | CRS.Simple |
-|zoom 5 | 84 px | 0.25 map units | Meso image | 
+|zoom   |       |unit                    |object|
+|-------|-------|--------------          |------------|
+|zoom 5 | 84 px | 84 map units           | CRS.Simple |
+|zoom 5 | 84 px | 0.25 map units         | Meso image | 
 |zoom 5 | 1 px  | 0.0027654879 map units | Meso image|
 
 More Math:
@@ -57,6 +59,8 @@ Now do the same for the y-axis.
 
 ![5/0/3](../workshop-medium-leaflet/Meso/5/0/3.png)
 
+|zoom   |       |unit                    |object|
+|-------|-------|--------------          |------------|
 |zoom 5 | 163 px | 163 map units | CRS.Simple |
 |zoom 5 | 163 px | 0.25 map units | Meso image | 
 |zoom 5 | 1 px  | 0.001533742 map units | Meso image|
