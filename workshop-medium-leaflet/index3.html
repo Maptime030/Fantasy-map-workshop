@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <style>
+      body{
+      	margin: 0;
+      	padding: 0;
+      }
+      #mapid {
+      	position: absolute;
+          height: 100%;
+          width: 100%;
+          padding: 0 0 0 0;
+          margin: 0 0 0 0 ;
+          z-index: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <title>Fantasy Maps</title>
+  </head>
+  <body> 
+    <div id="mapid"></div>
+     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script type="text/javascript">
+
+    	//Create Map with CRS.Simple
+		var map = L.map('mapid', {
+			crs: L.CRS.Simple
+		}).setView([0,0],5); // 0,0 is top left corner
+
+		//Image dimensions
+		var mapheight = 5500;
+		var mapwidth = 4066;
+		var zoomlevel = 5; // Level 5, because this is the level where meters-per-pixel is exactly 1
+
+		//Get map Bounds
+		var sw = map.unproject([0, mapheight], zoomlevel);  
+		var ne = map.unproject([mapwidth, 0], zoomlevel);
+		var layerbounds = new L.LatLngBounds(sw, ne);
+		map.setMaxBounds(new L.LatLngBounds(sw, ne));
+
+		// the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
+		L.tileLayer('Meso/{z}/{x}/{y}.png', {
+		  noWrap: true
+		}).addTo(map)
+    </script>
+  </body>
+</html>

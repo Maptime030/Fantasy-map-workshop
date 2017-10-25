@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <style>
+      body{
+      	margin: 0;
+      	padding: 0;
+      }
+      #mapid {
+      	position: absolute;
+          height: 100%;
+          width: 100%;
+          padding: 0 0 0 0;
+          margin: 0 0 0 0 ;
+          z-index: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <title>Fantasy Maps</title>
+  </head>
+  <body> 
+    <div id="mapid"></div>
+     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script type="text/javascript">
+
+    	//Create Map with CRS.Simple
+		var map = L.map('mapid').setView([1,0],0); // 0,0 is top left corner
+
+		// the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
+		L.tileLayer('Meso/{z}/{x}/{y}.png', {
+		  noWrap: true
+		}).addTo(map)
+    </script>
+  </body>
+</html>
