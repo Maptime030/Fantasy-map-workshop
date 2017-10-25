@@ -27,43 +27,77 @@
     <script src="rastercoords.js"></script>
     <script type="text/javascript">
 
+		var factorx = 0.002765487
+		var factory = 0.001533742
+		//offset sets 0,0 in centre instead of at top left corner.
+		var offsetx = 127.9992
+		var offsety = 127.999972352
+
+		//Create custom coordinate system
+		L.CRS.mySimple = L.extend({}, L.CRS.Simple, {
+		  projection: L.Projection.LonLat, //flat 
+		  transformation: new L.Transformation(factorx, offsetx, -factory, offsety ),
+		  // Changing the transformation is the key part, everything else is the same.
+		  // By specifying a factor, you specify what distance in meters one pixel occupies (as it still is CRS.Simple in all other regards).
+		  // In this case, I have a tile layer with 256px pieces, so Leaflet thinks it's only 256 meters wide.
+		  // I know the map is supposed to be 2048x2048 meters, so I specify a factor of 0.125 to multiply in both directions.
+		  // In the actual project, I compute all that from the gdal2tiles tilemapresources.xml, 
+		  // which gives the necessary information about tilesizes, total bounds and units-per-pixel at different levels.
+ 
+		// Scale, zoom and distance are entirely unchanged from CRS.Simple
+		  scale: function(zoom) {
+		    return Math.pow(2, zoom);
+		  },
+
+		  zoom: function(scale) {
+		    return Math.log(scale) / Math.LN2;
+		  },
+
+		  distance: function(latlng1, latlng2) {
+		    var dx = latlng2.lng - latlng1.lng,
+		      dy = latlng2.lat - latlng1.lat;
+
+		    return Math.sqrt(dx * dx + dy * dy);
+		  },
+		  infinite: true
+		});
+
     	//Create Map with CRS.Simple
-		var map = L.map('mapid');
+		var map = L.map('mapid', {
+			crs: L.CRS.mySimple
+		}).setView([0,0],2);
+
 
 		//Image dimensions
 		var mapheight = 5500;
 		var mapwidth = 4066;
 		var zoomlevel = 5; // Level 5, because this is the level where meters-per-pixel is exactly 1
 
-		// assign map and image dimensions
-		var rc = new L.RasterCoords(map, [mapwidth,mapheight])
-
-		// set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
-		map.setMaxZoom(rc.zoomLevel())
-
-		// all coordinates need to be unprojected using the `unproject` method
-		// set the view in the lower right edge of the image
-		map.setView(rc.unproject([mapwidth, mapheight]), 5)
-
-		// set markers on click events in the map
-		map.on('click', function (event) {
-		  // any position in leaflet needs to be projected to obtain the image coordinates
-		  var coords = rc.project(event.latlng)
-		  var marker = L.marker(rc.unproject(coords))
-		    .addTo(map)
-		  marker.bindPopup('[' + Math.floor(coords.x) + ',' + Math.floor(coords.y) + ']')
-		    .openPopup()
-		})
+		//Get map Bounds
+		var sw = map.unproject([0, mapheight], zoomlevel);  
+		var ne = map.unproject([mapwidth, 0], zoomlevel);
+		var layerbounds = new L.LatLngBounds(sw, ne);
+		map.setMaxBounds(new L.LatLngBounds(sw, ne));
 
 		// the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
 		L.tileLayer('../workshop-medium-leaflet/Meso/{z}/{x}/{y}.png', {
 		  noWrap: true
 		}).addTo(map)
 
+		//doing a lot of things here! 
+		var rc = new L.RasterCoords(map, [4066,5500])
+		map.on('click', function (event) {
+		  // any position in leaflet needs to be projected to obtain the image coordinates
+		  var coords = rc.project(event.latlng);
+		  var marker = L.marker(rc.unproject(coords)).addTo(map);
+		  marker.bindPopup('[' + Math.round(((coords.x)*factorx)+68.930309678)  + ',' + Math.round(78.226993708-(((coords.y)*factory)+38.12)) + ']')
+		    .openPopup()
+		})
+
+
 		L.control.scale({
 		  imperial: false
 		}).addTo(map);
-		
     </script>
   </body>
 </html>

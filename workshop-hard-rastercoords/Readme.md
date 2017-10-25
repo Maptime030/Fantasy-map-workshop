@@ -16,7 +16,7 @@ The marker however still has to be placed in the lat lon coordinates, so we need
 		
 		var marker = L.marker(rc.unproject(coords)).addTo(map)
 
-## To the map scale! 
+## Transforming the scale! 
 
 In order to show the right numbers, the same ones as on the image, we have to measure how many pixels is one map unit! In our case at zoom level 5, 1 px is 1 map unit. 
 
@@ -110,3 +110,35 @@ Let's use this in our example!
 		});
 
 
+		//Create Map with CRS.mySimple
+		var map = L.map('mapid', {
+			crs: L.CRS.mySimple
+		}).setView([0,0],2);
+
+Now our scale units are set to our map units!
+
+### Markers with custom coordinates
+
+This little bit of code uses the `L.RasterCoords` plug-in again. 
+And a lot is happening to make the coordinates right.. 
+
+	//doing a lot of things here! 
+		var rc = new L.RasterCoords(map, [4066,5500])
+		map.on('click', function (event) {
+		  // any position in leaflet needs to be projected to obtain the image coordinates
+		  var coords = rc.project(event.latlng);
+		  var marker = L.marker(rc.unproject(coords)).addTo(map);
+		  marker.bindPopup('[' + Math.round(((coords.x)*factorx)+68.930309678)  + ',' + Math.round(78.226993708-(((coords.y)*factory)+38.12)) + ']')
+		    .openPopup()
+		})
+
+The `latlng` coordinates of the click event are projected with the `L.RasterCoords` plug-in. Now the coordinates are in pixels. We know our conversion factor. So multiplying our coordinate with this factor gives us the right distance from 0,0 ! 
+
+**Note!** our x-ax and y-ax have a different transformation factor. If your grid is square instead of rectangle, as with this example, they are the same. 
+
+Because our scales do not start with at 0, but at 79 and 39, we need to add this to it. Also the margin of where the scale starts is subtracted from this! The scale starts with an offset of 000 px which is ... map units. 
+
+The y-ax is turned around!! The starting point of this reference system is at the top left corner. Our scale runs from bottom to top. That is why we need to invert the y-ax by subtracting it from its total range. 
+
+
+**Note!** the image is slightly skewed... So our coordinate system does not quite fit exactly.. But hey! getting it working approximately was already a hell of a job! 
