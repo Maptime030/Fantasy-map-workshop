@@ -8,7 +8,7 @@ Do you have your own map? Let's get it digital and see if we can convert it to t
 
 **Step 3** Get GDAL2Tiles
 
-If you are not confident to use this command line tool yourslef. Ask someone to do it for you! Skip the next headings and scroll right to the end of this page. 
+If you are not confident to use this command line tool yourself, ask someone to do it for you! Skip the next headings and scroll right to the end of this page. 
 
 There are also some tutorial online, that explain how to get your image interactive! 
 
@@ -108,7 +108,7 @@ Open the index.html file in your browser and see your image!
 It would be nice if the centre of your map, is also the centre of your image. And maybe you want to restrict panning and zooming to the borders of your image. Let's see how to do this:
 
 Have a look at the `.xml` file that came with your tiles. You can find this in your folder of your tiles. 
-We need the following infomation:
+We need the following information:
 
 - Height and with of image in px
 - The zoom level where 1 px = 1 unit

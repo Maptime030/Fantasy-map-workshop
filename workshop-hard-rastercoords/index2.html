@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <style>
+      body{
+      	margin: 0;
+      	padding: 0;
+      }
+      #mapid {
+      	position: absolute;
+          height: 100%;
+          width: 100%;
+          padding: 0 0 0 0;
+          margin: 0 0 0 0 ;
+          z-index: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <title>Fantasy Maps</title>
+  </head>
+  <body> 
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="rastercoords.js"></script>
+    <script type="text/javascript">
+
+    	//Create Map with CRS.Simple
+		var map = L.map('mapid');
+
+		//Image dimensions
+		var mapheight = 5500;
+		var mapwidth = 4066;
+		var zoomlevel = 5; // Level 5, because this is the level where meters-per-pixel is exactly 1
+
+		// assign map and image dimensions
+		var rc = new L.RasterCoords(map, [mapwidth,mapheight])
+
+		// set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
+		map.setMaxZoom(rc.zoomLevel())
+
+		// all coordinates need to be unprojected using the `unproject` method
+		// set the view in the lower right edge of the image
+		map.setView(rc.unproject([mapwidth, mapheight]), 5)
+
+		// set markers on click events in the map
+		map.on('click', function (event) {
+		  // any position in leaflet needs to be projected to obtain the image coordinates
+		  var coords = rc.project(event.latlng)
+		  var marker = L.marker(rc.unproject(coords))
+		    .addTo(map)
+		  marker.bindPopup('[' + Math.floor(coords.x) + ',' + Math.floor(coords.y) + ']')
+		    .openPopup()
+		})
+
+		// the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
+		L.tileLayer('../workshop-medium-leaflet/Meso/{z}/{x}/{y}.png', {
+		  noWrap: true
+		}).addTo(map)
+
+		L.control.scale({
+		  imperial: false
+		}).addTo(map);
+		
+    </script>
+  </body>
+</html>
