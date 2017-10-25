@@ -5,7 +5,7 @@ There is paper to sketch and paper to make your final map on.
 
 This is the assignment: 
 
-![]("10 - Hands on.jpg")
+![ass](https://github.com/Maptime030/Fantasy-map-workshop/blob/master/workshop-drawing-by-hand/19%20-%20Hands%20on.jpg?raw=true)
 
 Make sure to add cities, roads, forests, moutains and water! 
 
